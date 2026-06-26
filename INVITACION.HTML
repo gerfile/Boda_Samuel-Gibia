@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boda de Samuel y Gibia</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2c2c2c;
+    font-family: 'Cinzel', serif;
+    overflow: hidden;
+  }
+
+  .bg-photo {
+    position: fixed;
+    inset: 0;
+    background:
+      linear-gradient(rgba(20,20,20,0.55), rgba(20,20,20,0.55)),
+      url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80&grayscale') center/cover no-repeat;
+    filter: grayscale(100%);
+    z-index: 0;
+  }
+
+  .card {
+    position: relative;
+    z-index: 10;
+    width: 580px;
+    max-width: 94vw;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  .envelope {
+    position: relative;
+    width: 100%;
+    padding-bottom: 68%;
+    background-image: url('sobre.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    box-shadow: 0 12px 50px rgba(0,0,0,0.65);
+  }
+
+  .env-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7% 8% 6%;
+    text-align: center;
+  }
+
+  .boda-de {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 3vw, 18px);
+    font-weight: 700;
+    color: #7a1a1a;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .nombres {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(44px, 10vw, 68px);
+    color: #7a1a1a;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .fecha {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(12px, 2.5vw, 16px);
+    font-weight: 400;
+    color: #7a1a1a;
+    letter-spacing: 0.2em;
+  }
+
+  .mid {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2% 0 1%;
+  }
+
+  .sello-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(72px, 16vw, 105px);
+    z-index: 5;
+  }
+
+  .sello-img {
+    width: 100%;
+    display: block;
+    filter: drop-shadow(2px 4px 8px rgba(60,0,0,0.5));
+  }
+
+  .dedo-img {
+    position: absolute;
+    left: 70%;
+    top: 70%;
+    transform: translateY(-50%) rotate(-25deg);
+    width: clamp(44px, 9vw, 62px);
+    margin-left: 5px;
+    display: block;
+    filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.25));
+    animation: pulsar 1.5s ease-in-out infinite;
+    transform-origin: 20% 80%;
+    z-index: 6;
+  }
+
+  @keyframes pulsar {
+    0%   { transform: translateY(-50%) rotate(-25deg) scale(1); }
+    35%  { transform: translateY(-50%) rotate(-25deg) scale(0.88); }
+    65%  { transform: translateY(-50%) rotate(-25deg) scale(1); }
+    82%  { transform: translateY(-50%) rotate(-25deg) scale(0.93); }
+    100% { transform: translateY(-50%) rotate(-25deg) scale(1); }
+  }
+
+  .pulsa-texto {
+    position: absolute;
+    left: calc(50% + 90px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(10px, 2vw, 13px);
+    font-weight: 700;
+    color: #7a1a1a;
+    text-align: left;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 5;
+  }
+
+  .invitacion-texto {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(22px, 5vw, 32px);
+    color: #7a1a1a;
+    line-height: 1.3;
+  }
+
+  /* ✅ TRANSICIÓN MEJORADA */
+  .transition-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+  }
+
+  .transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .transition-content {
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 1s ease;
+  }
+
+  .transition-overlay.active .transition-content {
+    transform: scale(1);
+  }
+
+  .transition-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(36px, 9vw, 56px);
+    color: #f5efe0;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+  }
+
+  .transition-subtext {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(12px, 3vw, 16px);
+    color: #d4af37;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 1s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .card.fade-out {
+    animation: cardFadeOut 1s ease forwards;
+  }
+
+  @keyframes cardFadeOut {
+    to {
+      opacity: 0;
+      transform: scale(0.95) translateY(-30px);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-photo"></div>
+
+  <div class="card" id="mainCard" onclick="abrirInvitacion()">
+    <div class="envelope">
+      <div class="env-inner">
+
+        <div>
+          <div class="boda-de">Boda De</div>
+          <div class="nombres">Samuel y Gibia</div>
+          <div class="fecha">04.12.2026</div>
+        </div>
+
+        <div class="mid">
+          <div class="sello-wrap">
+            <img class="sello-img" src="sello.png" alt="Sello"/>
+            <img class="dedo-img" src="dedo.png" alt="Toca aquí"/>
+          </div>
+          <div class="pulsa-texto">Pulsa para abrir<br>invitacion</div>
+        </div>
+
+        <div class="invitacion-texto">
+          Tenemos el agrado de invitarlos<br>a nuestra boda
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Overlay de transición elegante -->
+  <div class="transition-overlay" id="overlay">
+    <div class="transition-content">
+      <div class="transition-text">¡Bienvenidos!</div>
+      <div class="transition-subtext">Samuel & Gibia</div>
+    </div>
+  </div>
+
+  <script>
+    function abrirInvitacion() {
+      const overlay = document.getElementById('overlay');
+      const card = document.getElementById('mainCard');
+      
+      // 1. Activar overlay (fade in suave)
+      overlay.classList.add('active');
+      
+      // 2. Desvanecer la carta
+      setTimeout(() => {
+        card.classList.add('fade-out');
+      }, 500);
+      
+      // 3. Guardar en localStorage que viene del sobre
+      localStorage.setItem('vieneDelSobre', 'true');
+      
+      // 4. Redirigir con parámetro
+      setTimeout(() => {
+        window.location.href = 'index.html?from=envelope';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
