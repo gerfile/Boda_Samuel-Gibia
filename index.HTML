@@ -25,12 +25,12 @@
       linear-gradient(rgba(20,20,20,0.55), rgba(20,20,20,0.55)),
       url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80&grayscale') center/cover no-repeat;
     filter: grayscale(100%);
-    z-index: 0;
+    z-invitacion1: 0;
   }
 
   .card {
     position: relative;
-    z-index: 10;
+    z-invitacion1: 10;
     width: 580px;
     max-width: 94vw;
     cursor: pointer;
@@ -104,7 +104,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: clamp(72px, 16vw, 105px);
-    z-index: 5;
+    z-invitacion1: 5;
   }
 
   .sello-img {
@@ -124,7 +124,7 @@
     filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.25));
     animation: pulsar 1.5s ease-in-out infinite;
     transform-origin: 20% 80%;
-    z-index: 6;
+    z-invitacion1: 6;
   }
 
   @keyframes pulsar {
@@ -149,7 +149,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     white-space: nowrap;
-    z-index: 5;
+    z-invitacion1: 5;
   }
 
   .invitacion-texto {
@@ -164,7 +164,7 @@
     position: fixed;
     inset: 0;
     background: #0a0a0a;
-    z-index: 100;
+    z-invitacion1: 100;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -285,7 +285,7 @@
       
       // 4. Redirigir con parámetro
       setTimeout(() => {
-        window.location.href = 'index.html?from=envelope';
+        window.location.href = 'invitacion1.html?from=envelope';
       }, 2500);
     }
   </script>
