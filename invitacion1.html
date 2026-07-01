@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" class="m-0 p-0" data-astro-cid-sckkx6r4>
     <head>
+        <!-- VERSION-FIX-ITINERARIO-2COL-v2 -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="color-scheme" content="light only">
@@ -30,11 +31,16 @@
                 max-width: 100%;
                 height: auto;
             }
+
+
             #titulo-container {
-                width: min(94vw, 100%);
+                width: fit-content;
+                max-width: min(94vw, 100%);
                 padding: 0 1rem;
                 left: 50%;
-                transform: translateX(-50%);
+                top: 120px;
+                transform: (translate 0%, -50%);
+                text-align: center;
             }
             #player-titulo-container {
                 width: 100%;
@@ -56,9 +62,17 @@
             }
             .evento-item,
             .evento-regalos {
-                display: grid;
-                grid-template-columns: 1fr;
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
                 gap: 1rem;
+                align-items: center;
+            }
+            @media (max-width: 480px) {
+                .evento-item,
+                .evento-regalos {
+                    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                    gap: 0.5rem !important;
+                }
             }
             .grupo-numero {
                 min-width: 80px;
@@ -130,12 +144,162 @@
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
             }
+
+            /* ═══════════════════════════════════════════════
+               REFUERZO RESPONSIVE ADICIONAL
+               ═══════════════════════════════════════════════ */
+            * {
+                box-sizing: border-box;
+            }
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Contador regresivo: en pantallas muy angostas (<380px)
+               4 grupos de 80px mínimo se salían de la pantalla */
+            @media (max-width: 380px) {
+                .grupo-numero {
+                    min-width: 56px;
+                }
+                #contador-container .flex.items-center.justify-center {
+                    gap: 0.35rem !important;
+                }
+                #card-contador {
+                    padding-left: 0.75rem !important;
+                    padding-right: 0.75rem !important;
+                }
+                .numero-elegante {
+                    font-size: 1.75rem !important;
+                }
+                .separador-elegante {
+                    margin-bottom: 1rem !important;
+                }
+            }
+
+            /* Fecha (SÁBADO 11 ABRIL / DOMINGO 12 ABRIL): columnas con
+               min-width fijo también se apretaban en pantallas muy chicas */
+            @media (max-width: 360px) {
+                #fecha-evento .flex.items-center.justify-center.gap-4,
+                #fecha-regalos-evento .flex.items-center.justify-center.gap-4 {
+                    gap: 0.5rem !important;
+                }
+                #fecha-evento .w-24,
+                #fecha-regalos-evento .w-24 {
+                    width: 4.5rem !important;
+                }
+                #fecha-evento .min-w-\[80px\],
+                #fecha-regalos-evento .min-w-\[80px\] {
+                    min-width: 60px !important;
+                }
+                #fecha-evento span.text-7xl,
+                #fecha-regalos-evento span.text-7xl {
+                    font-size: 3rem !important;
+                }
+            }
+
+            /* Nombres de los novios: título en cursiva puede desbordar
+               si el nombre es largo en pantallas angostas */
+            #nombre-novio,
+            #nombre-novia {
+                word-break: break-word;
+                overflow-wrap: break-word;
+                line-height: 1.1;
+            }
+
+            /* Itinerario: icono + texto en 2 columnas, evita que el
+               texto quede pegado al icono en pantallas angostas */
+            @media (max-width: 360px) {
+                .evento-item,
+                .evento-regalos {
+                    gap: 0.5rem;
+                }
+                .evento-item p,
+                .evento-regalos p {
+                    font-size: 0.95rem !important;
+                }
+            }
+
+            /* Reproductor de música: evita que el título con mariposas
+               se apriete demasiado en pantallas angostas */
+            @media (max-width: 360px) {
+                #player-titulo-container {
+                    gap: 0.5rem !important;
+                }
+                #mariposa-izq img,
+                #mariposa-der img {
+                    width: 1.75rem !important;
+                }
+            }
+
+            /* Calendario: reduce padding lateral en pantallas angostas */
+            @media (max-width: 360px) {
+                #calendario-card {
+                    padding: 1rem !important;
+                }
+            }
+
+            /* ═══════════════════════════════════════════════
+               EFECTO DE APARICIÓN SUAVE AL HACER SCROLL
+               ═══════════════════════════════════════════════ */
+            .reveal-fade {
+                opacity: 0;
+                transform: translateY(28px);
+                transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+                will-change: opacity, transform;
+            }
+            .reveal-fade.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Elementos del itinerario (ya vienen con opacity-0 en el HTML original) */
+            .titulo-itinerario,
+            .titulo-itinerario-regalos,
+            .linea-central,
+            .linea-central-regalos,
+            .corazon-item,
+            .corazon-regalos,
+            .evento-item,
+            .evento-regalos {
+                transition: opacity 0.7s ease, transform 0.7s ease;
+                transform: translateY(18px);
+            }
+            .titulo-itinerario.is-visible,
+            .titulo-itinerario-regalos.is-visible,
+            .linea-central.is-visible,
+            .linea-central-regalos.is-visible,
+            .corazon-item.is-visible,
+            .corazon-regalos.is-visible,
+            .evento-item.is-visible,
+            .evento-regalos.is-visible {
+                opacity: 1 !important;
+                transform: translateY(0);
+            }
+
+            /* Respeta a quienes prefieren menos movimiento en pantalla */
+            @media (prefers-reduced-motion: reduce) {
+                .reveal-fade,
+                .titulo-itinerario,
+                .titulo-itinerario-regalos,
+                .linea-central,
+                .linea-central-regalos,
+                .corazon-item,
+                .corazon-regalos,
+                .evento-item,
+                .evento-regalos {
+                    transition: none !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+            }
         </style>
     </head>
-  
-</script>
-</script>
-</script>
     <body class="min-h-screen m-0 p-0" data-astro-cid-sckkx6r4>
         <!-- 🎬 ANIMACIÓN DE BIENVENIDA (SOLO SI VIENE DEL SOBRE) -->
 <div id="welcomeAnimation" style="
@@ -242,7 +406,6 @@
   }
 </script>
 
-<main class="m-0 p-0 overflow-x-hidden" data-astro-cid-sckkx6r4>
         <main class="m-0 p-0 overflow-x-hidden" data-astro-cid-sckkx6r4>
             <section class="relative text-black w-full" data-astro-cid-lclltlkr>
                 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -288,13 +451,13 @@
                             <div class="relative mb-8 w-full" id="nombres-container" data-astro-cid-lclltlkr>
                                 <div class="relative z-30" data-astro-cid-lclltlkr>
                                     <!-- 👨 Nombre del novio -->
-                                    <h2 class="font-great-vibes text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#626a54] tracking-wide mb-2" id="nombre-novio" data-astro-cid-lclltlkr">Samuel</h2>
+                                    <h2 class="font-great-vibes text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#626a54] tracking-wide mb-2" id="nombre-novio" data-astro-cid-lclltlkr">Samuel Rivas</h2>
                                     <!-- ⚭ Símbolo & -->
                                     <div class="text-[#C9A961] text-4xl sm:text-5xl md:text-6xl font-charm my-4" id="ampersand" data-astro-cid-lclltlkr>
 &
 </div>
                                     <!-- 👰 Nombre de la novia -->
-                                    <h2 class="font-great-vibes text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#626a54] tracking-wide mt-2" id="nombre-novia" data-astro-cid-lclltlkr">Gibia</h2>
+                                    <h2 class="font-great-vibes text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#626a54] tracking-wide mt-2" id="nombre-novia" data-astro-cid-lclltlkr">Gibia Acarapi</h2>
                                 </div>
                             </div>
                         </div>
@@ -322,6 +485,7 @@
             <!-- 🎬 ANIMACIONES CON GSAP                                     -->
             <!-- ═══════════════════════════════════════════════════════════ -->
             <script type="module" src="./_astro/NombresFlores.astro_astro_type_script_index_0_lang.CE00dNp6.js"></script>
+            <script type="module" src="./_astro/Reproductor.astro_astro_type_script_index_0_lang.jtP7n0u3.js"></script>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎨 ESTILOS CSS                                              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -499,10 +663,10 @@
                     <!-- 📖 TEXTO DEDICATORIA - MATEO 19:6 -->
                     <div class="text-center px-6" data-astro-cid-td3fqdnl>
                         <p class="font-charm text-lg sm:text-xl md:text-2xl text-[#626a54] leading-relaxed mb-4" id="texto-ded" data-astro-cid-td3fqdnl>
-                            Así que no son ya más dos, sino una sola carne; por tanto, 
-                          lo que Dios ha unido, no lo separe el hombre.</p>
+                          A donde quiera que tú fueras, iré yo, y dondequiera que vivieres, 
+                          viviré. Tu pueblo será mi pueblo, y tu Dios mi Dios.</p>
                         <!-- 📜 REFERENCIA BÍBLICA -->
-                        <p class="font-charm text-base sm:text-lg md:text-xl text-[#C9A961] italic" id="referencia-ded" data-astro-cid-td3fqdnl>Mateo 19:6
+                        <p class="font-charm text-base sm:text-lg md:text-xl text-[#C9A961] italic" id="referencia-ded" data-astro-cid-td3fqdnl>Ruth 1:16
 </p>
                     </div>
                     <!-- 🌸 FLORES ABAJO -->
@@ -557,7 +721,7 @@
         </h2>
         <div class="space-y-1">
           <p class="font-charm text-lg sm:text-xl text-[#626a54]">FELICIANA MAMANI GUERRA</p>
-        <!--<p class="font-charm text-lg sm:text-xl text-[#626a54]">María Escobar Choque</p>
+        <p class="font-charm text-lg sm:text-xl text-[#626a54]">VALENTIN ACARAPI MAMANI ✝️</p>
         </div>
       </div> 
                         <!-- 👗 SECCIÓN 2: PADRES DE LA NOVIA -->
@@ -574,8 +738,8 @@
                         <div id="seccion-padrinos-anillos" class="pt-6 max-w-xl mx-auto" data-astro-cid-ey7yipyc>
                             <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-ey7yipyc>Padrinos de Boda</h2>
                             <div class="space-y-1" data-astro-cid-ey7yipyc>
-                                <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>SIMON</p>
-                                <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>RUTH</p>
+                                <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>SIMON ALIAGA</p>
+                                <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>RUTH MARI ALANOCA RIVAS</p>
                             </div>
                         </div>
 
@@ -1625,5 +1789,80 @@
             </section>
             <script type="module" src="./_astro/FloresAbajo.astro_astro_type_script_index_0_lang.v6XqZbFa.js"></script>
         </main>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- ✨ EFECTO DE APARICIÓN SUAVE AL HACER SCROLL                 -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const revealTargets = [];
+
+                // 1) Cada sección grande de la página aparece suavemente
+                //    (la primera, "Nos Casamos", se ve de entrada, sin animación)
+                const mainSections = document.querySelectorAll('main > section');
+                mainSections.forEach((sec, index) => {
+                    if (index === 0) return;
+                    sec.classList.add('reveal-fade');
+                    revealTargets.push(sec);
+                });
+
+                // 2) Elementos propios del itinerario (títulos, línea, corazones, eventos)
+                const itinerarioSelector = [
+                    '.titulo-itinerario',
+                    '.titulo-itinerario-regalos',
+                    '.linea-central',
+                    '.linea-central-regalos',
+                    '.corazon-item',
+                    '.corazon-regalos',
+                    '.evento-item',
+                    '.evento-regalos'
+                ].join(', ');
+                document.querySelectorAll(itinerarioSelector).forEach(el => revealTargets.push(el));
+
+                // 3) Elementos adicionales de la invitación con animación al hacer scroll
+                const extraScrollSelectors = [
+                    '#titulo-container',
+                    '#anillos',
+                    '#nombres-container',
+                    '#player-card',
+                    '#texto-ded',
+                    '#referencia-ded',
+                    '#texto-bendicion',
+                    '#texto-invitacion-container',
+                    '#fecha-evento',
+                    '#card-contador',
+                    '#calendario-card',
+                    '#texto-esperamos-container',
+                    '#anillos-final',
+                    '#seccion-padres-novio',
+                    '#seccion-padrinos-anillos',
+                    '#flores-abajo-ded'
+                ].join(', ');
+                document.querySelectorAll(extraScrollSelectors).forEach(el => {
+                    el.classList.add('reveal-fade');
+                    revealTargets.push(el);
+                });
+
+                // Si el navegador no soporta IntersectionObserver, mostrar todo directo
+                if (!('IntersectionObserver' in window)) {
+                    revealTargets.forEach(el => el.classList.add('is-visible'));
+                    return;
+                }
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12,
+                    rootMargin: '0px 0px -60px 0px'
+                });
+
+                revealTargets.forEach(el => observer.observe(el));
+            });
+        </script>
     </body>
 </html>
