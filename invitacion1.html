@@ -5,9 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="color-scheme" content="light only">
-        <link rel="icon" type="image/png" href="./iconos/Anillos.png">
         <meta name="generator" content="Astro v5.15.2">
         <title>Boda</title>
+<link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-anillos.png">
+<link rel="icon" type="image/svg+xml" sizes="any" href="./assets/favicon-anillos.svg">
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,169 +244,11 @@
                 }
             }
 
-            /* ═══════════════════════════════════════════════
-               EFECTO DE APARICIÓN SUAVE AL HACER SCROLL
-               ═══════════════════════════════════════════════ */
-            .reveal-fade {
-                opacity: 0;
-                transform: translateY(28px);
-                transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-                will-change: opacity, transform;
-            }
-            .reveal-fade.is-visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Elementos del itinerario (ya vienen con opacity-0 en el HTML original) */
-            .titulo-itinerario,
-            .titulo-itinerario-regalos,
-            .linea-central,
-            .linea-central-regalos,
-            .corazon-item,
-            .corazon-regalos,
-            .evento-item,
-            .evento-regalos {
-                transition: opacity 0.7s ease, transform 0.7s ease;
-                transform: translateY(18px);
-            }
-            .titulo-itinerario.is-visible,
-            .titulo-itinerario-regalos.is-visible,
-            .linea-central.is-visible,
-            .linea-central-regalos.is-visible,
-            .corazon-item.is-visible,
-            .corazon-regalos.is-visible,
-            .evento-item.is-visible,
-            .evento-regalos.is-visible {
-                opacity: 1 !important;
-                transform: translateY(0);
-            }
-
-            /* Respeta a quienes prefieren menos movimiento en pantalla */
-            @media (prefers-reduced-motion: reduce) {
-                .reveal-fade,
-                .titulo-itinerario,
-                .titulo-itinerario-regalos,
-                .linea-central,
-                .linea-central-regalos,
-                .corazon-item,
-                .corazon-regalos,
-                .evento-item,
-                .evento-regalos {
-                    transition: none !important;
-                    transform: none !important;
-                    opacity: 1 !important;
-                }
-            }
         </style>
+        <link rel="stylesheet" href="./assets/invitacion.css">
+        <script src="./assets/invitacion.js" defer></script>
     </head>
     <body class="min-h-screen m-0 p-0" data-astro-cid-sckkx6r4>
-        <!-- 🎬 ANIMACIÓN DE BIENVENIDA (SOLO SI VIENE DEL SOBRE) -->
-<div id="welcomeAnimation" style="
-  position: fixed;
-  inset: 0;
-  background: #ffffff;
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-">
-  <h1 style="
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(48px, 12vw, 80px);
-    color: #7a1a1a;
-    margin: 0;
-    opacity: 0;
-    animation: welcomeFadeIn 0.8s ease forwards 0.2s;
-  ">Samuel y Gibia</h1>
-  
-  <p style="
-    font-family: 'Cinzel', serif;
-    font-size: clamp(16px, 3vw, 20px);
-    color: #8b6914;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    margin-top: 15px;
-    opacity: 0;
-    animation: welcomeFadeIn 0.8s ease forwards 0.6s;
-  ">04.12.2026</p>
-  
-  <div style="
-    width: 120px;
-    height: 2px;
-    background: #7a1a1a;
-    margin-top: 25px;
-    opacity: 0;
-    transform: scaleX(0);
-    animation: welcomeLine 0.8s ease forwards 1s;
-  "></div>
-</div>
-
-<style>
-  @keyframes welcomeFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes welcomeLine {
-    from {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    to {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
-</style>
-
-<script>
-  // Detectar si viene del sobre
-  const urlParams = new URLSearchParams(window.location.search);
-  const vieneDelSobre = urlParams.get('from') === 'envelope' || 
-                        localStorage.getItem('vieneDelSobre') === 'true';
-
-  if (vieneDelSobre) {
-    const welcome = document.getElementById('welcomeAnimation');
-    const main = document.querySelector('main');
-    
-    // Ocultar el contenido principal temporalmente
-    if (main) {
-      main.style.opacity = '0';
-      main.style.transition = 'opacity 0.5s ease';
-    }
-    
-    // Mostrar la animación
-    welcome.style.display = 'flex';
-    
-    // Después de 1.8 segundos, desvanecer animación y mostrar contenido
-    setTimeout(() => {
-      welcome.style.transition = 'opacity 0.5s ease';
-      welcome.style.opacity = '0';
-      
-      // Mostrar el contenido principal
-      if (main) {
-        main.style.opacity = '1';
-      }
-      
-      // Remover animación completamente
-      setTimeout(() => {
-        welcome.style.display = 'none';
-        localStorage.removeItem('vieneDelSobre');
-      }, 500);
-      
-    }, 1800); // Solo 1.8 segundos de animación
-  }
-</script>
-
         <main class="m-0 p-0 overflow-x-hidden" data-astro-cid-sckkx6r4>
             <section class="relative text-black w-full" data-astro-cid-lclltlkr>
                 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -484,8 +327,6 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎬 ANIMACIONES CON GSAP                                     -->
             <!-- ═══════════════════════════════════════════════════════════ -->
-            <script type="module" src="./_astro/NombresFlores.astro_astro_type_script_index_0_lang.CE00dNp6.js"></script>
-            <script type="module" src="./_astro/Reproductor.astro_astro_type_script_index_0_lang.jtP7n0u3.js"></script>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎨 ESTILOS CSS                                              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -504,32 +345,32 @@
                             <div class="text-center z-30 mb-2 w-full flex items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8" id="player-titulo-container" data-astro-cid-3odxrcp6>
                                     <!-- 🦋 MARIPOSA IZQUIERDA -->
                                     <div id="mariposa-izq" class="flex-shrink-0" data-astro-cid-3odxrcp6>
-                                        <img src="./gif/mariposaVerde.gif" alt="Mariposa izquierda" class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain" data-astro-cid-3odxrcp6>
+                                        <picture><source media="(prefers-reduced-motion: reduce)" srcset="./imagenes/Hojas.webp"><img src="./gif/mariposaVerde.gif" alt="Mariposa izquierda" class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain" data-astro-cid-3odxrcp6></picture>
                                     </div>
                                     <!-- TEXTO CENTRAL -->
                                     <div id="player-titulo-text" class="flex-shrink min-w-0 text-center" data-astro-cid-3odxrcp6>
-                                        <h3 class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#626a54] mb-2" data-astro-cid-3odxrcp6>Mi Canción <br> Especial
+                                        <h3 class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#626a54] mb-2" data-astro-cid-3odxrcp6>Mi Canción<br>Especial
 </h3>
                                     </div>
                                     <!-- 🦋 MARIPOSA DERECHA -->
                                     <div id="mariposa-der" class="flex-shrink-0" data-astro-cid-3odxrcp6>
-                                        <img src="./gif/mariposaVerde.gif" alt="Mariposa derecha" class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]" data-astro-cid-3odxrcp6>
+                                        <picture><source media="(prefers-reduced-motion: reduce)" srcset="./imagenes/Hojas.webp"><img src="./gif/mariposaVerde.gif" alt="Mariposa derecha" class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]" data-astro-cid-3odxrcp6></picture>
                                     </div>
                                 </div>
                             </div>
-                            <p id="romantic-text" class="text-xs sm:text-sm italic text-[#626a54]/70 font-medium w-full text-center px-2" data-astro-cid-3odxrcp6>✨ Una melodía para recordar siempre ✨
-</p>
+                            <p id="romantic-text" class="text-xs sm:text-sm italic text-[#626a54]/70 font-medium w-full text-center px-2" data-astro-cid-3odxrcp6>✨ Una melodía para recordar por siempre ✨</p>
                         </div>
+                        <p id="music-status" role="status"></p>
                         <!-- Controles principales -->
                         <div class="flex items-center justify-center space-x-6 sm:space-x-10" id="controls-container" data-astro-cid-3odxrcp6>
                             <!-- Botón anterior -->
-                            <button id="prevBtn" class="text-[#626a54]/60 hover:text-[#626a54] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none" data-astro-cid-3odxrcp6>
+                            <button id="prevBtn" type="button" aria-label="Melodía anterior" class="text-[#626a54]/60 hover:text-[#626a54] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none" data-astro-cid-3odxrcp6>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-3odxrcp6>
                                     <path d="M7 6v12l-2-2V8l2-2zm2 6l8-5v10l-8-5z" data-astro-cid-3odxrcp6></path>
                                 </svg>
                             </button>
                             <!-- Botón principal corazón -->
-                            <button id="playPauseBtn" type="button" class="relative text-[#626a54] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group" data-astro-cid-3odxrcp6>
+                            <button id="playPauseBtn" type="button" aria-label="Reproducir música" aria-pressed="false" class="relative text-[#626a54] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group" data-astro-cid-3odxrcp6>
                                 <!-- Fondo del botón corazón -->
                                 <div class="absolute inset-0 bg-gradient-to-br from-[#626a54]/20 to-[#626a54]/10 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300" data-astro-cid-3odxrcp6></div>
                                 <!-- Icono corazón -->
@@ -551,7 +392,7 @@
                                 <div class="absolute inset-0 pointer-events-none" id="heart-particles" data-astro-cid-3odxrcp6></div>
                             </button>
                             <!-- Botón siguiente -->
-                            <button id="nextBtn" class="text-[#626a54]/60 hover:text-[#626a54] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none" data-astro-cid-3odxrcp6>
+                            <button id="nextBtn" type="button" aria-label="Siguiente melodía" class="text-[#626a54]/60 hover:text-[#626a54] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none" data-astro-cid-3odxrcp6>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-3odxrcp6>
                                     <path d="M17 18V6l2 2v8l-2 2zm-2-6L7 7v10l8-5z" data-astro-cid-3odxrcp6></path>
                                 </svg>
@@ -566,91 +407,19 @@
                             </div>
                             <!-- Barra de progreso personalizada -->
                             <div class="relative" data-astro-cid-3odxrcp6>
-                                <input type="range" id="progressBar" value="0" max="100" class="w-full h-2 bg-gradient-to-r from-[#626a54]/20 to-[#626a54]/10 rounded-full appearance-none cursor-pointer slider-elegant" data-astro-cid-3odxrcp6>
+                                <input type="range" id="progressBar" aria-label="Progreso de la melodía" value="0" max="100" class="w-full h-2 bg-gradient-to-r from-[#626a54]/20 to-[#626a54]/10 rounded-full appearance-none cursor-pointer slider-elegant" data-astro-cid-3odxrcp6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Audio element -->
-            <audio id="music-audio" preload="auto" hidden data-astro-cid-3odxrcp6>
+            <audio id="music-audio" preload="metadata" hidden data-astro-cid-3odxrcp6>
                 <source src="./musica/melodia 1.mp3" type="audio/mpeg" data-astro-cid-3odxrcp6>
                 Tu navegador no soporta audio HTML5.
             </audio>
             <!-- SCRIPTS CON TIMING INTELIGENTE -->
-            <script>
-                const audio = document.getElementById('music-audio');
-                const playPauseBtn = document.getElementById('playPauseBtn');
-                const progressBar = document.getElementById('progressBar');
-                const playIcon = document.getElementById('play-icon');
-                const pauseIcon = document.getElementById('pause-icon');
-                const currentTimeEl = document.getElementById('currentTime');
-                const totalDurationEl = document.getElementById('totalDuration');
 
-                function formatTime(seconds) {
-                    const m = Math.floor(seconds / 60);
-                    const s = Math.floor(seconds % 60);
-                    return `${m}:${s.toString().padStart(2, '0')}`;
-                }
-
-                function updateTimeDisplay() {
-                    if (!audio) return;
-                    if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
-                    if (totalDurationEl && audio.duration && !Number.isNaN(audio.duration)) totalDurationEl.textContent = formatTime(audio.duration);
-                }
-
-                function updateProgressBar() {
-                    if (!audio || !progressBar) return;
-                    if (audio.duration) {
-                        progressBar.value = ((audio.currentTime / audio.duration) * 100).toString();
-                    }
-                }
-
-                function switchToPlayIcon() {
-                    playIcon && playIcon.classList.remove('hidden');
-                    pauseIcon && pauseIcon.classList.add('hidden');
-                }
-
-                function switchToPauseIcon() {
-                    playIcon && playIcon.classList.add('hidden');
-                    pauseIcon && pauseIcon.classList.remove('hidden');
-                }
-
-                if (audio) {
-                    audio.addEventListener('loadedmetadata', () => {
-                        updateTimeDisplay();
-                        updateProgressBar();
-                    });
-
-                    audio.addEventListener('timeupdate', () => {
-                        updateTimeDisplay();
-                        updateProgressBar();
-                    });
-
-                    audio.addEventListener('play', switchToPauseIcon);
-                    audio.addEventListener('pause', switchToPlayIcon);
-                    audio.addEventListener('ended', switchToPlayIcon);
-                }
-
-                if (playPauseBtn) {
-                    playPauseBtn.addEventListener('click', () => {
-                        if (!audio) return;
-                        if (audio.paused) {
-                            audio.play().catch(err => console.log('Error al reproducir:', err));
-                        } else {
-                            audio.pause();
-                        }
-                    });
-                }
-
-                if (progressBar) {
-                    progressBar.addEventListener('input', () => {
-                        if (!audio || !audio.duration) return;
-                        audio.currentTime = (Number(progressBar.value) / 100) * audio.duration;
-                        updateTimeDisplay();
-                    });
-                }
-            </script>
             <!-- ═══════════════════════════════════════════════════ -->
             <!-- 💒 COMPONENTE DEDICATORIA - INVITACIÓN DE BODA              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -678,7 +447,6 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎬 ANIMACIONES CON GSAP                                     -->
             <!-- ═══════════════════════════════════════════════════════════ -->
-            <script type="module" src="./_astro/Dedicatoria.astro_astro_type_script_index_0_lang.BbvRlkyz.js"></script>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎨 ESTILOS CSS                                              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -699,41 +467,17 @@
                         </div>
 
 
-                        <!-- 👔 SECCIÓN 1: PADRES DEL NOVIO -->
-
+                        <!-- Padres en el orden indicado por la familia -->
                         <div id="seccion-padres-novio" class="max-w-xl mx-auto" data-astro-cid-ey7yipyc>
-                            <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-ey7yipyc>Padres Del Novio</h2>
-
-                            <div class="space-y-1" data-astro-cid-ey7yipyc>
-                                <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>FELICIDAD VASQUEZ</p>
-                            </div>
-
-                            <div class="space-y-1" data-astro-cid-ey7yipyc>
-                                <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>FELIX ROLANDO RIVAS</p>
-                            </div>
-                        <br>
-
+                            <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">Padres de los novios</h2>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">FELIX ROLANDO RIVAS</p>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">VALENTIN ACARAPI MAMANI ✝️</p>
                         </div>
-                        <!-- 👔 SECCIÓN 1: PADRES DEL NOVIA -->
-                        <div id="seccion-padres-novia" class="max-w-xl mx-auto">
-        <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">
-          Madre De La novia
-        </h2>
-        <div class="space-y-1">
-          <p class="font-charm text-lg sm:text-xl text-[#626a54]">FELICIANA MAMANI GUERRA</p>
-        <p class="font-charm text-lg sm:text-xl text-[#626a54]">VALENTIN ACARAPI MAMANI ✝️</p>
-        </div>
-      </div> 
-                        <!-- 👗 SECCIÓN 2: PADRES DE LA NOVIA -->
-                        <!-- <div id="seccion-padres-novia" class="pt-6 max-w-xl mx-auto">
-        <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">
-          Padres de la novia
-        </h2>
-        <div class="space-y-1">
-          <p class="font-charm text-lg sm:text-xl text-[#626a54]">Justino Subirana</p>
-          <p class="font-charm text-lg sm:text-xl text-[#626a54]">Ramona Ordóñez</p>
-        </div>
-      </div> -->
+                        <div id="seccion-padres-novia" class="pt-6 max-w-xl mx-auto" data-astro-cid-ey7yipyc>
+                            <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">Madres de los novios</h2>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">FELICIDAD VASQUEZ</p>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">FELICIANA MAMANI GUERRA</p>
+                        </div>
                         <!-- 💍 SECCIÓN 3: PADRINOS DE ANILLOS -->
                         <div id="seccion-padrinos-anillos" class="pt-6 max-w-xl mx-auto" data-astro-cid-ey7yipyc>
                             <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-ey7yipyc>Padrinos de Boda</h2>
@@ -741,9 +485,19 @@
                                 <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>SIMON ALIAGA</p>
                                 <p class="font-charm text-lg sm:text-xl text-[#626a54]" data-astro-cid-ey7yipyc>RUTH MARI ALANOCA RIVAS</p>
                             </div>
+                            <div class="pt-6" id="padrinos-de-anillos">
+                            <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">Padrinos de anillos</h2>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">Mario Seco Acarapi</p>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">Vilma Canaviri Marca</p>
+                            </div>
+                            <div class="pt-6" id="padrinos-conteo-regalos">
+                            <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">Padrinos de conteo de regalos</h2>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">Cristian Cayola Ojeda</p>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">Yebena Cochi Condori</p>
+                            </div>
                         </div>
 
-                        
+
                         <!-- 📜 SECCIÓN 4: PADRINOS DE CIVIL -->
                        <!--  <div id="seccion-padrinos-civil" class="pt-6 max-w-xl mx-auto" data-astro-cid-ey7yipyc>
                             <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-ey7yipyc>Padrinos de Torta
@@ -765,7 +519,6 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎬 ANIMACIONES CON GSAP                                     -->
             <!-- ═══════════════════════════════════════════════════════════ -->
-            <script type="module" src="./_astro/Nombres.astro_astro_type_script_index_0_lang.-aVeWZfm.js"></script>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎨 ESTILOS CSS                                              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -832,7 +585,6 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎬 ANIMACIONES CON GSAP                                     -->
             <!-- ═══════════════════════════════════════════════════════════ -->
-            <script type="module" src="./_astro/Fecha.astro_astro_type_script_index_0_lang.DRx9A0eZ.js"></script>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎨 ESTILOS CSS                                              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -916,7 +668,6 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎬 SCRIPTS Y ANIMACIONES                                    -->
             <!-- ═══════════════════════════════════════════════════════════ -->
-            <script type="module" src="./_astro/Contador.astro_astro_type_script_index_0_lang.BH7uEKR_.js"></script>
             <script>
                 (function() {
                         const target = new Date(2026, 11, 4, 0, 0, 0).getTime();
@@ -1010,7 +761,6 @@
                 </div>
             </section>
             <!-- Scripts -->
-            <script type="module" src="./_astro/Calendario.astro_astro_type_script_index_0_lang.DZ2o19bb.js"></script>
             <script>
                 window.addEventListener('DOMContentLoaded', () => {
                     const targetDay = 4;
@@ -1056,11 +806,11 @@
                         </div>
                         <!-- TÍTULO DIRECCIÓN -->
                         <div class="mb-2" id="titulo-direccion" data-astro-cid-opgfpeqy>
-                            <h2 class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide" data-astro-cid-opgfpeqy>Ceremonia </h2>
+                            <h2 class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide" data-astro-cid-opgfpeqy>Ceremonia civil</h2>
                         </div>
                         <!-- ICONO CENTRAL -->
                         <div class="flex justify-center" data-astro-cid-opgfpeqy>
-                            <img src="./imagenes/iglesia.png" alt="Icono de dirección" class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-dorado" data-astro-cid-opgfpeqy>
+                            <img src="./assets/anillos-civil.svg" alt="Dos anillos de boda" class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-dorado civil-rings" data-astro-cid-opgfpeqy>
                         </div>
                         <!-- 🌸 FLORES EN EL BORDE DERECHO (PEGADA AL BORDE DEL CONTENEDOR) -->
                         <div class="absolute right-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -mr-6 sm:-mr-7 md:-mr-8" id="flores-dir-der" data-astro-cid-opgfpeqy>
@@ -1075,23 +825,18 @@
                     <!-- INFORMACIÓN DE UBICACIÓN -->
                     <div class="mb-2" id="info-direccion" data-astro-cid-opgfpeqy>
                         <!-- Nombre del lugar -->
-                        <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-opgfpeqy>AUN NO ME ESPECIFICARRON 
+                        <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-opgfpeqy>Lugar por confirmar
 </h3>
                         <!-- Dirección -->
-                        <p class="font-charm text-lg md:text-xl text-[#626a54] leading-relaxed mb-3" data-astro-cid-opgfpeqy>SIN DIRECCION </p>
+                        <p class="font-charm text-lg md:text-xl text-[#626a54] leading-relaxed mb-3" data-astro-cid-opgfpeqy>Dirección por confirmar</p>
                         <!-- Hora -->
-                        <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold" data-astro-cid-opgfpeqy>Hora: 10:30 hrs.(SUGERENCIA DE HORA)
+                        <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold" data-astro-cid-opgfpeqy>Hora por confirmar
 </p>
                     </div>
                     <!-- BOTÓN VER UBICACIÓN -->
-                    <div class="flex justify-center" id="boton-ubicacion" data-astro-cid-opgfpeqy>
-                        <a href="https://maps.app.goo.gl/95T8uWMEkzSmXen56" target="_blank" rel="noopener noreferrer" data-astro-cid-opgfpeqy>
-                            <img src="./imagenes/VerUbicacion.webp" alt="Ver ubicación en el mapa" class="w-56 md:w-56 lg:w-64 h-auto object-contain cursor-pointer transition-transform duration-300 hover:scale-105" data-astro-cid-opgfpeqy>
-                        </a>
-                    </div>
+                    <div class="flex justify-center" id="boton-ubicacion" data-astro-cid-opgfpeqy></div>
                 </div>
             </section>
-            <script type="module" src="./_astro/DireccionIglesia.astro_astro_type_script_index_0_lang.iyDltwXO.js"></script>
             <section class="py-4 px-4 relative" data-astro-cid-7ajgaava>
                 <div class="max-w-xl mx-auto text-center relative" data-astro-cid-7ajgaava>
                     <!-- TÍTULO DIRECCIÓN -->
@@ -1132,7 +877,6 @@
                     </div>
                 </div>
             </section>
-            <script type="module" src="./_astro/DireccionRecepcion.astro_astro_type_script_index_0_lang.BT6f1APP.js"></script>
             <section class="px-4 relative overflow-hidden py-16" data-astro-cid-7hnz25kt>
                 <div class="max-w-5xl mx-auto relative z-10" data-astro-cid-7hnz25kt>
                     <div class="max-w-3xl mx-auto relative" data-astro-cid-7hnz25kt>
@@ -1156,17 +900,17 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <!-- Evento 1: Misa -->
+                                <!-- Evento 1: Ceremonia civil -->
                                 <div class="evento-item grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-7hnz25kt>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-izq" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/iglesia.png" alt="Icono de Misa" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/anillos-civil.svg" alt="Dos anillos de boda" class="w-full h-full object-contain icono-dorado civil-rings" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-7hnz25kt>
-                                        <p class="font-charm text-lg md:text-base lg:text-lg text-[#C9A961] font-bold leading-tight" data-astro-cid-7hnz25kt>Misa
+                                        <p class="font-charm text-lg md:text-base lg:text-lg text-[#C9A961] font-bold leading-tight" data-astro-cid-7hnz25kt>Ceremonia civil
 </p>
-                                        <p class="font-charm text-base md:text-sm text-[#626a54] mt-0.5" data-astro-cid-7hnz25kt>10:30 hrs.
+                                        <p class="font-charm text-base md:text-sm text-[#626a54] mt-0.5" data-astro-cid-7hnz25kt>Hora por confirmar
 </p>
                                     </div>
                                 </div>
@@ -1359,25 +1103,7 @@
                     </div>
                 </div>
             </section>
-            <script type="module" src="./_astro/Itinerario.astro_astro_type_script_index_0_lang.27LILytU.js"></script>
-            <script>
-                function revealItineraries() {
-                    const nodes = document.querySelectorAll(
-                        '.titulo-itinerario, .linea-central, .corazon-item, .evento-item, .titulo-itinerario-regalos, .linea-central-regalos, .corazon-regalos, .evento-regalos'
-                    );
-                    nodes.forEach(node => {
-                        const style = window.getComputedStyle(node);
-                        if (style.opacity === '0') {
-                            node.style.opacity = '1';
-                        }
-                        if (style.transform !== 'none') {
-                            node.style.transform = 'none';
-                        }
-                    });
-                }
-                document.addEventListener('DOMContentLoaded', revealItineraries);
-                window.addEventListener('load', revealItineraries);
-            </script>
+
             <section class="py-8 px-4 relative" data-astro-cid-yya52rkr>
                 <div class="max-w-xl mx-auto text-center relative" data-astro-cid-yya52rkr>
                     <!-- 🏛️ ICONO CON FLORES EN LOS BORDES -->
@@ -1393,7 +1119,7 @@
                         </div>
                         <!-- ICONO CENTRAL -->
                         <div class="flex justify-center" data-astro-cid-yya52rkr>
-                            <img src="./imagenes/iglesia.png" alt="Icono recepción" class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-dorado-regalos" data-astro-cid-yya52rkr>
+                            <img src="./imagenes/lluvia-sobre.png" alt="Conteo de regalos" class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-dorado-regalos" data-astro-cid-yya52rkr>
                         </div>
                         <!-- 🌸 FLORES BORDE DERECHO -->
                         <div class="absolute right-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -mr-6 sm:-mr-7 md:-mr-8" id="flores-regalos-der" data-astro-cid-yya52rkr>
@@ -1408,27 +1134,20 @@
                     <!-- INFORMACIÓN DE UBICACIÓN -->
                     <div class="mb-2" id="info-regalos" data-astro-cid-yya52rkr>
                         <!-- Nombre del lugar -->
-                        <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-yya52rkr>Salón de Eventos "aun no espesifican "
+                        <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-yya52rkr>Piscina Paraíso
 </h3>
                         <!-- Dirección -->
                         <p class="font-charm text-lg md:text-xl text-[#626a54] leading-relaxed mb-3" data-astro-cid-yya52rkr>
-                            el encantado bar discoteca ,<br data-astro-cid-yya52rkr>calle 135, N° 103
+                            Barrio Paraíso
 
                         </p>
-                        <!-- Hora -->
-                        <!-- <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold">
-                Hora: 08:00 hrs.
-            </p> -->
+                        <!-- Fecha y hora del conteo de regalos -->
+                        <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold" data-astro-cid-yya52rkr>5 de diciembre de 2026 · 15:00 hrs.</p>
                     </div>
-                    <!-- BOTÓN VER UBICACIÓN -->
-                    <div class="flex justify-center" id="boton-regalos" data-astro-cid-yya52rkr>
-                        <a href="https://maps.app.goo.gl/xEQHovncesJcdxmi8" target="_blank" rel="noopener noreferrer" data-astro-cid-yya52rkr>
-                            <img src="./imagenes/VerUbicacion.webp" alt="Ver ubicación en el mapa" class="w-56 md:w-56 lg:w-64 h-auto object-contain cursor-pointer transition-transform duration-300 hover:scale-105" data-astro-cid-yya52rkr>
-                        </a>
-                    </div>
+                    <!-- Ubicación exacta pendiente de confirmar -->
+                    <div class="flex justify-center" id="boton-regalos" data-astro-cid-yya52rkr></div>
                 </div>
             </section>
-            <script type="module" src="./_astro/Conteo.astro_astro_type_script_index_0_lang.C0oGAo_h.js"></script>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 📅 COMPONENTE FECHA - RECEPCIÓN DE REGALOS                 -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1460,22 +1179,22 @@
                     <!-- 📅 Fecha -->
                     <div class="relative max-w-md mx-auto" id="fecha-regalos-evento" data-astro-cid-clu36qb4>
                         <div class="flex items-center justify-center gap-4 md:gap-6" data-astro-cid-clu36qb4>
-                            <!-- DOMINGO con líneas -->
+                            <!-- SÁBADO con líneas -->
                             <div class="flex flex-col items-center w-24 md:w-28" data-astro-cid-clu36qb4>
                                 <div class="w-full h-px bg-[#C9A961] mb-2" data-astro-cid-clu36qb4></div>
-                                <span class="font-charm text-lg md:text-xl text-[#626a54] uppercase tracking-wider font-bold text-center" data-astro-cid-clu36qb4>DOMINGO
+                                <span class="font-charm text-lg md:text-xl text-[#626a54] uppercase tracking-wider font-bold text-center" data-astro-cid-clu36qb4>SÁBADO
 </span>
                                 <div class="w-full h-px bg-[#C9A961] mt-2" data-astro-cid-clu36qb4></div>
                             </div>
-                            <!-- Número 12 -->
+                            <!-- Número 5 -->
                             <div class="flex items-center justify-center min-w-[80px] md:min-w-[100px]" data-astro-cid-clu36qb4>
-                                <span class="font-charm text-7xl md:text-8xl text-[#C9A961] font-bold" data-astro-cid-clu36qb4>12
+                                <span class="font-charm text-7xl md:text-8xl text-[#C9A961] font-bold" data-astro-cid-clu36qb4>5
 </span>
                             </div>
-                            <!-- ABRIL con líneas -->
+                            <!-- DICIEMBRE con líneas -->
                             <div class="flex flex-col items-center w-24 md:w-28" data-astro-cid-clu36qb4>
                                 <div class="w-full h-px bg-[#C9A961] mb-2" data-astro-cid-clu36qb4></div>
-                                <span class="font-charm text-lg md:text-xl text-[#626a54] uppercase tracking-wider font-bold text-center" data-astro-cid-clu36qb4>ABRIL
+                                <span class="font-charm text-lg md:text-xl text-[#626a54] uppercase tracking-wider font-bold text-center" data-astro-cid-clu36qb4>DICIEMBRE
 </span>
                                 <div class="w-full h-px bg-[#C9A961] mt-2" data-astro-cid-clu36qb4></div>
                             </div>
@@ -1488,7 +1207,6 @@
                     </div>
                 </div>
             </section>
-            <script type="module" src="./_astro/Fecha2.astro_astro_type_script_index_0_lang.DRakOidV.js"></script>
             <section class="px-4 relative overflow-hidden py-20" data-astro-cid-uwibvbn4>
                 <div class="max-w-5xl mx-auto relative z-10" data-astro-cid-uwibvbn4>
                     <div class="max-w-3xl mx-auto relative" data-astro-cid-uwibvbn4>
@@ -1583,7 +1301,7 @@
                                 <!-- Evento 4: Rumbo al salón -->
                                 <div class="evento-regalos grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-uwibvbn4>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-izq" data-astro-cid-uwibvbn4>
-                                        <p class="font-charm text-lg md:text-base lg:text-lg text-[#C9A961] font-bold leading-tight" data-astro-cid-uwibvbn4>Rumbo al Salón de Eventos Primavera
+                                        <p class="font-charm text-lg md:text-base lg:text-lg text-[#C9A961] font-bold leading-tight" data-astro-cid-uwibvbn4>Rumbo a piscina Paraíso, barrio Paraíso
 </p>
                                         <p class="font-charm text-base md:text-sm text-[#626a54] mt-0.5" data-astro-cid-uwibvbn4>13:30 hrs.
 </p>
@@ -1612,7 +1330,7 @@
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-uwibvbn4>
                                         <p class="font-charm text-lg md:text-base lg:text-lg text-[#C9A961] font-bold leading-tight" data-astro-cid-uwibvbn4>Conteo de regalos
 </p>
-                                        <p class="font-charm text-base md:text-sm text-[#626a54] mt-0.5" data-astro-cid-uwibvbn4>14:30 hrs.
+                                        <p class="font-charm text-base md:text-sm text-[#626a54] mt-0.5" data-astro-cid-uwibvbn4>15:00 hrs.
 </p>
                                     </div>
                                 </div>
@@ -1673,7 +1391,6 @@
                     </div>
                 </div>
             </section>
-            <script type="module" src="./_astro/Itinerario2.astro_astro_type_script_index_0_lang.Daw3rotV.js"></script>
             <section class="py-4 px-4 relative overflow-hidden" data-astro-cid-vofvjw4t>
                 <div class="max-w-6xl mx-auto relative z-10" data-astro-cid-vofvjw4t>
                     <div class="max-w-4xl mx-auto text-center" data-astro-cid-vofvjw4t>
@@ -1755,7 +1472,6 @@
                     </div>
                 </div>
             </section>
-            <script type="module" src="./_astro/Despedida.astro_astro_type_script_index_0_lang.C02gKorv.js"></script>
             <section class="relative text-black w-full py-8 pb-0 px-0" data-astro-cid-c74wkgxi>
                 <div class="w-full mx-auto relative z-10 px-0" data-astro-cid-c74wkgxi>
                     <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1787,82 +1503,11 @@
                     </div>
                 </div>
             </section>
-            <script type="module" src="./_astro/FloresAbajo.astro_astro_type_script_index_0_lang.v6XqZbFa.js"></script>
         </main>
 
         <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- ✨ EFECTO DE APARICIÓN SUAVE AL HACER SCROLL                 -->
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const revealTargets = [];
 
-                // 1) Cada sección grande de la página aparece suavemente
-                //    (la primera, "Nos Casamos", se ve de entrada, sin animación)
-                const mainSections = document.querySelectorAll('main > section');
-                mainSections.forEach((sec, index) => {
-                    if (index === 0) return;
-                    sec.classList.add('reveal-fade');
-                    revealTargets.push(sec);
-                });
-
-                // 2) Elementos propios del itinerario (títulos, línea, corazones, eventos)
-                const itinerarioSelector = [
-                    '.titulo-itinerario',
-                    '.titulo-itinerario-regalos',
-                    '.linea-central',
-                    '.linea-central-regalos',
-                    '.corazon-item',
-                    '.corazon-regalos',
-                    '.evento-item',
-                    '.evento-regalos'
-                ].join(', ');
-                document.querySelectorAll(itinerarioSelector).forEach(el => revealTargets.push(el));
-
-                // 3) Elementos adicionales de la invitación con animación al hacer scroll
-                const extraScrollSelectors = [
-                    '#titulo-container',
-                    '#anillos',
-                    '#nombres-container',
-                    '#player-card',
-                    '#texto-ded',
-                    '#referencia-ded',
-                    '#texto-bendicion',
-                    '#texto-invitacion-container',
-                    '#fecha-evento',
-                    '#card-contador',
-                    '#calendario-card',
-                    '#texto-esperamos-container',
-                    '#anillos-final',
-                    '#seccion-padres-novio',
-                    '#seccion-padrinos-anillos',
-                    '#flores-abajo-ded'
-                ].join(', ');
-                document.querySelectorAll(extraScrollSelectors).forEach(el => {
-                    el.classList.add('reveal-fade');
-                    revealTargets.push(el);
-                });
-
-                // Si el navegador no soporta IntersectionObserver, mostrar todo directo
-                if (!('IntersectionObserver' in window)) {
-                    revealTargets.forEach(el => el.classList.add('is-visible'));
-                    return;
-                }
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.12,
-                    rootMargin: '0px 0px -60px 0px'
-                });
-
-                revealTargets.forEach(el => observer.observe(el));
-            });
-        </script>
     </body>
 </html>

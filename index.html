@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boda de Samuel y Gibia</title>
+<link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-anillos.png">
+<link rel="icon" type="image/svg+xml" sizes="any" href="./assets/favicon-anillos.svg">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -25,12 +27,12 @@
       linear-gradient(rgba(20,20,20,0.55), rgba(20,20,20,0.55)),
       url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80&grayscale') center/cover no-repeat;
     filter: grayscale(100%);
-    z-invitacion1: 0;
+    z-index: 0;
   }
 
   .card {
     position: relative;
-    z-invitacion1: 10;
+    z-index: 10;
     width: 580px;
     max-width: 94vw;
     cursor: pointer;
@@ -105,7 +107,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: clamp(72px, 16vw, 105px);
-    z-invitacion1: 5;
+    z-index: 5;
   }
 
   .sello-img {
@@ -125,7 +127,7 @@
     filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.25));
     animation: pulsar 1.5s ease-in-out infinite;
     transform-origin: 20% 80%;
-    z-invitacion1: 6;
+    z-index: 6;
   }
 
   @keyframes pulsar {
@@ -150,7 +152,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     white-space: nowrap;
-    z-invitacion1: 5;
+    z-index: 5;
   }
 
   .invitacion-texto {
@@ -165,7 +167,7 @@
     position: fixed;
     inset: 0;
     background: #0a0a0a;
-    z-invitacion1: 100;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,12 +231,18 @@
       transform: scale(0.95) translateY(-30px);
     }
   }
+  .card:focus-visible { outline: 3px solid #C9A961; outline-offset: 6px; }
+  .transition-overlay, .transition-content { transition-duration: .65s; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .transition-text, .transition-subtext { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body>
   <div class="bg-photo"></div>
 
-  <div class="card" id="mainCard" onclick="abrirInvitacion()">
+  <div class="card" id="mainCard" role="link" tabindex="0" aria-label="Abrir invitación de Samuel y Gibia" onclick="abrirInvitacion()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirInvitacion();}">
     <div class="envelope">
       <div class="env-inner">
 
@@ -269,25 +277,17 @@
   </div>
 
   <script>
+    let abriendo = false;
     function abrirInvitacion() {
-      const overlay = document.getElementById('overlay');
-      const card = document.getElementById('mainCard');
-      
-      // 1. Activar overlay (fade in suave)
-      overlay.classList.add('active');
-      
-      // 2. Desvanecer la carta
-      setTimeout(() => {
-        card.classList.add('fade-out');
-      }, 500);
-      
-      // 3. Guardar en localStorage que viene del sobre
-      localStorage.setItem('vieneDelSobre', 'true');
-      
-      // 4. Redirigir con parámetro
-      setTimeout(() => {
+      if (abriendo) return;
+      abriendo = true;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         window.location.href = 'invitacion1.html?from=envelope';
-      }, 2500);
+        return;
+      }
+      document.getElementById('overlay').classList.add('active');
+      document.getElementById('mainCard').classList.add('fade-out');
+      setTimeout(() => { window.location.href = 'invitacion1.html?from=envelope'; }, 1100);
     }
   </script>
 </body>
