@@ -32,3 +32,14 @@
 
 /* Mantiene la composición del reproductor cuando no hay avisos. */
 #music-status:empty { display: none; }
+
+/* Los destellos flanquean el texto incluso cuando la frase necesita dos líneas. */
+#romantic-text {
+  display: grid;
+  grid-template-columns: 1em minmax(0, 1fr) 1em;
+  align-items: center;
+  column-gap: .3rem;
+  max-width: 100%;
+}
+#romantic-text .melody-caption { min-width: 0; overflow-wrap: anywhere; }
+#romantic-text .melody-sparkle { white-space: nowrap; font-style: normal; }
