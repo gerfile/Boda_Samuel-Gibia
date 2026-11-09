@@ -246,6 +246,7 @@
 
         </style>
         <link rel="stylesheet" href="./assets/invitacion.css">
+        <link rel="stylesheet" href="./assets/music-card.css">
         <script src="./assets/invitacion.js" defer></script>
     </head>
     <body class="min-h-screen m-0 p-0" data-astro-cid-sckkx6r4>
@@ -330,102 +331,38 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 🎨 ESTILOS CSS                                              -->
             <!-- ═══════════════════════════════════════════════════════════ -->
-            <section id="retrato-pareja" class="portrait-section" aria-label="Retrato de Samuel y Gibia">
-                <figure class="couple-portrait">
-                    <div class="couple-arch">
-                        <img src="./assets/retrato-samuel-gibia.jpg" width="840" height="1051" alt="Samuel y Gibia juntos, abrazados y vestidos de verde" decoding="async">
-                    </div>
-                    <img class="couple-portrait-floral" src="./imagenes/Separadores.webp" alt="" aria-hidden="true">
-                </figure>
-            </section>
-            <!-- REPRODUCTOR DE MÚSICA CON TIMING INTELIGENTE -->
-            <div class="w-full max-w-[350px] sm:max-w-sm mx-auto sm:mt-4 px-4" id="music-player-container" data-astro-cid-3odxrcp6>
-                <!-- Card principal con efecto glass -->
-                <div class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden" id="player-card" data-astro-cid-3odxrcp6>
-                    <!-- Efecto de brillo de fondo -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#626a54]/10 via-transparent to-[#626a54]/5 pointer-events-none" data-astro-cid-3odxrcp6></div>
-                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-[#626a54]/10 rounded-full blur-3xl pointer-events-none" data-astro-cid-3odxrcp6></div>
-                    <div class="absolute -bottom-20 -left-20 w-32 h-32 bg-[#626a54]/8 rounded-full blur-3xl pointer-events-none" data-astro-cid-3odxrcp6></div>
-                    <!-- Contenido del reproductor -->
-                    <div class="relative z-10" data-astro-cid-3odxrcp6>
-                        <!-- Título elegante -->
-                        <div class="text-center mb-3" id="player-title" data-astro-cid-3odxrcp6>
-                            <div class="text-center z-30 mb-2 w-full flex items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8" id="player-titulo-container" data-astro-cid-3odxrcp6>
-                                    <!-- 🦋 MARIPOSA IZQUIERDA -->
-                                    <div id="mariposa-izq" class="flex-shrink-0" data-astro-cid-3odxrcp6>
-                                        <picture><source media="(prefers-reduced-motion: reduce)" srcset="./imagenes/Hojas.webp"><img src="./gif/mariposaVerde.gif" alt="Mariposa izquierda" class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain" data-astro-cid-3odxrcp6></picture>
-                                    </div>
-                                    <!-- TEXTO CENTRAL -->
-                                    <div id="player-titulo-text" class="flex-shrink min-w-0 text-center" data-astro-cid-3odxrcp6>
-                                        <h3 class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#626a54] mb-2" data-astro-cid-3odxrcp6>Mi Canción<br>Especial
-</h3>
-                                    </div>
-                                    <!-- 🦋 MARIPOSA DERECHA -->
-                                    <div id="mariposa-der" class="flex-shrink-0" data-astro-cid-3odxrcp6>
-                                        <picture><source media="(prefers-reduced-motion: reduce)" srcset="./imagenes/Hojas.webp"><img src="./gif/mariposaVerde.gif" alt="Mariposa derecha" class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]" data-astro-cid-3odxrcp6></picture>
-                                    </div>
-                                </div>
-                            </div>
-                            <p id="romantic-text" class="text-xs sm:text-sm italic text-[#626a54]/70 font-medium w-full text-center px-2" data-astro-cid-3odxrcp6><span class="melody-sparkle" aria-hidden="true">✨</span><span class="melody-caption">Una melodía para recordar por siempre</span><span class="melody-sparkle" aria-hidden="true">✨</span></p>
-                        </div>
-                        <p id="music-status" role="status"></p>
-                        <!-- Controles principales -->
-                        <div class="flex items-center justify-center space-x-6 sm:space-x-10" id="controls-container" data-astro-cid-3odxrcp6>
-                            <!-- Botón anterior -->
-                            <button id="prevBtn" type="button" aria-label="Melodía anterior" class="text-[#626a54]/60 hover:text-[#626a54] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none" data-astro-cid-3odxrcp6>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-3odxrcp6>
-                                    <path d="M7 6v12l-2-2V8l2-2zm2 6l8-5v10l-8-5z" data-astro-cid-3odxrcp6></path>
-                                </svg>
-                            </button>
-                            <!-- Botón principal corazón -->
-                            <button id="playPauseBtn" type="button" aria-label="Reproducir música" aria-pressed="false" class="relative text-[#626a54] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group" data-astro-cid-3odxrcp6>
-                                <!-- Fondo del botón corazón -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#626a54]/20 to-[#626a54]/10 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300" data-astro-cid-3odxrcp6></div>
-                                <!-- Icono corazón -->
-                                <div class="relative z-10 transform transition-all duration-300" data-astro-cid-3odxrcp6>
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="drop-shadow-lg" data-astro-cid-3odxrcp6>
-                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" data-astro-cid-3odxrcp6></path>
-                                    </svg>
-                                    <!-- Icono play/pause superpuesto -->
-                                    <div class="absolute inset-0 flex items-center justify-center" data-astro-cid-3odxrcp6>
-                                        <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="white" class="drop-shadow-sm" data-astro-cid-3odxrcp6>
-                                            <path d="M8 5v14l11-7z" data-astro-cid-3odxrcp6></path>
-                                        </svg>
-                                        <svg id="pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="white" class="hidden drop-shadow-sm" data-astro-cid-3odxrcp6>
-                                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" data-astro-cid-3odxrcp6></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <!-- Ondas de pulso -->
-                                <div class="absolute inset-0 pointer-events-none" id="heart-particles" data-astro-cid-3odxrcp6></div>
-                            </button>
-                            <!-- Botón siguiente -->
-                            <button id="nextBtn" type="button" aria-label="Siguiente melodía" class="text-[#626a54]/60 hover:text-[#626a54] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none" data-astro-cid-3odxrcp6>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" data-astro-cid-3odxrcp6>
-                                    <path d="M17 18V6l2 2v8l-2 2zm-2-6L7 7v10l8-5z" data-astro-cid-3odxrcp6></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <!-- Barra de progreso elegante -->
-                        <div class="px-2 sm:px-4" id="progress-container" data-astro-cid-3odxrcp6>
-                            <div class="flex items-center justify-between text-xs sm:text-sm text-[#626a54]/60 mb-3 font-medium" data-astro-cid-3odxrcp6>
-                                <span id="currentTime" data-astro-cid-3odxrcp6>0:00</span>
-                                <span class="text-[#C9A961]/80" data-astro-cid-3odxrcp6>♪</span>
-                                <span id="totalDuration" data-astro-cid-3odxrcp6>--:--</span>
-                            </div>
-                            <!-- Barra de progreso personalizada -->
-                            <div class="relative" data-astro-cid-3odxrcp6>
-                                <input type="range" id="progressBar" aria-label="Progreso de la melodía" value="0" max="100" class="w-full h-2 bg-gradient-to-r from-[#626a54]/20 to-[#626a54]/10 rounded-full appearance-none cursor-pointer slider-elegant" data-astro-cid-3odxrcp6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Audio element -->
-            <audio id="music-audio" preload="metadata" hidden data-astro-cid-3odxrcp6>
-                <source src="./musica/melodia 1.mp3" type="audio/mpeg" data-astro-cid-3odxrcp6>
-                Tu navegador no soporta audio HTML5.
-            </audio>
+    <section id="music-player-container" class="music-card" aria-labelledby="song-title">
+      <div class="cover">
+        <img class="portrait" src="./assets/retrato-samuel-gibia.jpg" width="840" height="1051" alt="Samuel y Gibia abrazados y vestidos de verde">
+      </div>
+      <div class="player">
+        <div class="song-heading">
+          <picture><source media="(prefers-reduced-motion: reduce)" srcset="./imagenes/Hojas.webp"><img src="./gif/mariposaVerde.gif" alt="" aria-hidden="true"></picture>
+          <h2 id="song-title">Mi Canción<br>Especial</h2>
+          <picture><source media="(prefers-reduced-motion: reduce)" srcset="./imagenes/Hojas.webp"><img class="mirror" src="./gif/mariposaVerde.gif" alt="" aria-hidden="true"></picture>
+        </div>
+        <p class="caption"><span aria-hidden="true">✨</span><span>Una melodía para recordar por siempre</span><span aria-hidden="true">✨</span></p>
+        <input type="range" id="progressBar" min="0" max="100" step="0.1" value="0" aria-label="Progreso de la melodía">
+        <div class="times"><span id="currentTime">0:00</span><span class="note" aria-hidden="true">♪</span><span id="totalDuration">--:--</span></div>
+        <div class="controls">
+          <button id="prevBtn" type="button" aria-label="Melodía anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6v12H5V6zm2 6 10-6v12z"/></svg>
+          </button>
+          <button id="playPauseBtn" class="heart" type="button" aria-label="Reproducir música" aria-pressed="false">
+            <span class="heart-inner">
+              <svg class="heart-shape" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <svg class="play-symbol" id="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+              <svg class="play-symbol hidden" id="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+            </span>
+          </button>
+          <button id="nextBtn" type="button" aria-label="Siguiente melodía">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6h2v12h-2zM5 6l10 6-10 6z"/></svg>
+          </button>
+        </div>
+        <p id="music-status" role="status"></p>
+      </div>
+      <audio id="music-audio" preload="metadata" hidden><source src="./musica/melodia%201.mp3" type="audio/mpeg"></audio>
+    </section>
             <!-- SCRIPTS CON TIMING INTELIGENTE -->
 
             <!-- ═══════════════════════════════════════════════════ -->
