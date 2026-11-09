@@ -43,3 +43,20 @@
 }
 #romantic-text .melody-caption { min-width: 0; overflow-wrap: anywhere; }
 #romantic-text .melody-sparkle { white-space: nowrap; font-style: normal; }
+
+/* Retrato aprobado: imagen completa y marco de arco fino. */
+.portrait-section { padding: 0 24px 24px; }
+.couple-portrait { position: relative; width: min(100%, 350px); margin: 0 auto; padding: 6px; }
+.couple-arch {
+  padding: 5px;
+  border: 1px solid #C9A961;
+  border-radius: 50% 50% 12px 12px / 35% 35% 12px 12px;
+  background: #ffffff70;
+  box-shadow: 0 10px 28px #626a5412;
+}
+.couple-arch > img {
+  display: block; width: 100%; height: auto;
+  border-radius: 50% 50% 8px 8px / 35% 35% 8px 8px;
+}
+.couple-portrait-floral { position: relative; display: block; width: 62%; height: auto; margin: -13px auto 0; }
+@media (max-width: 360px) { .portrait-section { padding-inline: 18px; } }
