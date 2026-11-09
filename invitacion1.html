@@ -483,7 +483,7 @@
                         </div>
                         <div id="seccion-padres-novia" class="pt-6 max-w-xl mx-auto" data-astro-cid-ey7yipyc>
                             <h2 class="font-charm text-xl sm:text-2xl text-[#C9A961] font-bold mb-2">Padres de la novia</h2>
-                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">VALENTIN ACARAPI MAMANI ✝️</p>
+                            <p class="font-charm text-lg sm:text-xl text-[#626a54]">VALENTIN ACARAPI MAMANI <span class="memorial-cross" role="img" aria-label="En memoria">✝︎</span></p>
                             <p class="font-charm text-lg sm:text-xl text-[#626a54]">FELICIANA MAMANI GUERRA</p>
                         </div>
                         <!-- 💍 SECCIÓN 3: PADRINOS DE ANILLOS -->
@@ -1153,7 +1153,13 @@
                         <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold" data-astro-cid-yya52rkr>5 de diciembre de 2026 · 15:00 hrs.</p>
                     </div>
                     <!-- Ubicación exacta pendiente de confirmar -->
-                    <div class="flex justify-center" id="boton-regalos" data-astro-cid-yya52rkr></div>
+                    <div class="gift-map-pending" id="boton-regalos" data-astro-cid-yya52rkr>
+                        <!-- Al recibir el mapa real, sustituir este botón deshabilitado por un enlace a esa URL. -->
+                        <button type="button" class="gift-map-button" disabled aria-describedby="mapa-regalos-pendiente">
+                            <img src="./imagenes/VerUbicacion.webp" alt="Ver ubicación" class="w-56 md:w-56 lg:w-64 h-auto object-contain" data-astro-cid-yya52rkr>
+                        </button>
+                        <p id="mapa-regalos-pendiente" class="font-charm text-base text-[#626a54]">Ubicación por confirmar</p>
+                    </div>
                 </div>
             </section>
             <!-- ═══════════════════════════════════════════════════════════ -->
