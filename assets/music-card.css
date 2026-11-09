@@ -1,14 +1,14 @@
 /* Placa de foto y música aprobada; estilos limitados a este componente. */
 #music-player-container.music-card { width: min(100%, 370px); margin: auto; padding: 23px 23px 17px; border: 1px solid #C9A96175; border-radius: 7px; overflow: hidden; background: linear-gradient(140deg, #ffffff3d, #ffffff12); box-shadow: 0 10px 32px #626a5415, inset 0 0 0 1px #ffffff70; backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
-#music-player-container .cover { padding: 0; border: 1px solid #ffffff90; }
-#music-player-container .portrait { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 40%; border-radius: 0; }
+#music-player-container .cover { padding: 0; border: 1px solid #ffffff90; border-radius: 8px; overflow: hidden; }
+#music-player-container .portrait { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 40%; border-radius: 8px; }
 #music-player-container .player { position: relative; padding: 14px 0 0; background: transparent; }
 #music-player-container .song-heading { display: flex; align-items: center; justify-content: center; gap: 14px; }
 #music-player-container .song-heading picture { flex: 0 0 25px; }
 #music-player-container .song-heading img { display: block; width: 25px; height: auto; }
 #music-player-container .mirror { transform: scaleX(-1); }
 #music-player-container h2 { font: 400 28px/1.1 'Great Vibes', cursive; margin: 2px 0 8px; }
-#music-player-container .caption { display: grid; grid-template-columns: 1em minmax(0,1fr) 1em; align-items: center; gap: 5px; font-size: 13px; font-style: italic; line-height: 1.5; margin: 5px 0 10px; }
+#music-player-container .caption { display: grid; grid-template-columns: 1em minmax(0,1fr) 1em; align-items: center; justify-items: center; text-align: center; gap: 5px; font-size: 13px; font-style: italic; line-height: 1.5; margin: 5px 0 10px; }
 #music-player-container .caption span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
 #music-player-container .controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 224px; margin: 4px auto 0; }
 #music-player-container button { display: grid; place-items: center; border: 0; padding: 8px; min-width: 44px; min-height: 44px; color: var(--olive); background: transparent; cursor: pointer; }
