@@ -248,6 +248,8 @@
         <link rel="stylesheet" href="./assets/invitacion.css">
         <link rel="stylesheet" href="./assets/music-card.css">
         <script src="./assets/invitacion.js" defer></script>
+        <script src="./assets/iconos-animados.js" defer></script>
+        <link rel="stylesheet" href="./assets/iconos-animados.css">
     </head>
     <body class="min-h-screen m-0 p-0" data-astro-cid-sckkx6r4>
         <main class="m-0 p-0 overflow-x-hidden" data-astro-cid-sckkx6r4>
@@ -615,7 +617,7 @@
             <!-- ═══════════════════════════════════════════════════════════ -->
             <script>
                 (function() {
-                        const target = new Date(2026, 11, 4, 19, 0, 0).getTime();
+                        const target = new Date('2026-12-04T19:00:00-04:00').getTime();
                     const minutos = document.getElementById('minutos');
                     const segundos = document.getElementById('segundos');
 
@@ -786,6 +788,7 @@
                     </div>
                 </div>
             </section>
+            <div class="icon-motion-control"><button id="toggle-icon-motion" type="button" aria-pressed="false" hidden>Pausar iconos animados</button><p id="icon-motion-info" role="status"></p></div>
             <section class="px-4 relative overflow-hidden py-16" data-astro-cid-7hnz25kt>
                 <div class="max-w-5xl mx-auto relative z-10" data-astro-cid-7hnz25kt>
                     <div class="max-w-3xl mx-auto relative" data-astro-cid-7hnz25kt>
@@ -841,7 +844,7 @@
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-der" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/recepcion.png" alt="Icono de Ingreso" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/iconos-animados/novios.png" data-gif="./assets/iconos-animados/novios.gif" data-still="./assets/iconos-animados/novios.png" alt="Icono de Ingreso" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                 </div>
@@ -885,7 +888,7 @@
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-der" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/brindis.png" alt="Icono de Recepción" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/iconos-animados/brindis.png" data-gif="./assets/iconos-animados/brindis.gif" data-still="./assets/iconos-animados/brindis.png" alt="Icono de Recepción" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                 </div>
@@ -901,7 +904,7 @@
                                 <div class="evento-item grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-7hnz25kt>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-izq" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/cena.png" alt="Icono de Cena" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/iconos-animados/cena.png" data-gif="./assets/iconos-animados/cena.gif" data-still="./assets/iconos-animados/cena.png" alt="Icono de Cena" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-7hnz25kt>
@@ -929,7 +932,7 @@
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-der" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/musica.png" alt="Icono de Fiesta" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/iconos-animados/fiesta.png" data-gif="./assets/iconos-animados/fiesta.gif" data-still="./assets/iconos-animados/fiesta.png" alt="Icono de Fiesta" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                 </div>
@@ -945,7 +948,7 @@
                                 <div class="evento-item grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-7hnz25kt>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-izq" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/torta.png" alt="Icono de Torta" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/iconos-animados/torta.png" data-gif="./assets/iconos-animados/torta.gif" data-still="./assets/iconos-animados/torta.png" alt="Icono de Torta" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-7hnz25kt>
@@ -989,7 +992,7 @@
                                 <div class="evento-item grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-7hnz25kt>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-izq" data-astro-cid-7hnz25kt>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-7hnz25kt>
-                                            <img src="./imagenes/despedida.png" alt="Icono de Despedida" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
+                                            <img src="./assets/iconos-animados/despedida.png" data-gif="./assets/iconos-animados/despedida.gif" data-still="./assets/iconos-animados/despedida.png" alt="Icono de Despedida" class="w-full h-full object-contain icono-dorado" data-astro-cid-7hnz25kt>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-7hnz25kt>
@@ -1013,56 +1016,7 @@
                 </div>
             </section>
 
-            <section class="py-8 px-4 relative" data-astro-cid-yya52rkr>
-                <div class="max-w-xl mx-auto text-center relative" data-astro-cid-yya52rkr>
-                    <!-- 🏛️ ICONO CON FLORES EN LOS BORDES -->
-                    <div class="relative mb-4" id="icono-direccion-regalos" data-astro-cid-yya52rkr>
-                        <!-- 🌸 FLORES BORDE IZQUIERDO -->
-                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -ml-6 sm:-ml-7 md:-ml-8" id="flores-regalos-izq" data-astro-cid-yya52rkr>
-                            <img src="./imagenes/FlorLateral.webp" alt="Flores decorativas izquierda" class="w-full h-auto object-contain" data-astro-cid-yya52rkr>
-                        </div>
-                        <!-- TÍTULO EVENTO -->
-                        <div class="mb-2" id="titulo-regalos" data-astro-cid-yya52rkr>
-                            <h2 class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide" data-astro-cid-yya52rkr>Conteo de Regalos
-</h2>
-                        </div>
-                        <!-- ICONO CENTRAL -->
-                        <div class="flex justify-center" data-astro-cid-yya52rkr>
-                            <img src="./imagenes/lluvia-sobre.png" alt="Conteo de regalos" class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-dorado-regalos" data-astro-cid-yya52rkr>
-                        </div>
-                        <!-- 🌸 FLORES BORDE DERECHO -->
-                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -mr-6 sm:-mr-7 md:-mr-8" id="flores-regalos-der" data-astro-cid-yya52rkr>
-                            <img src="./imagenes/FlorLateral.webp" alt="Flores decorativas derecha" class="w-full h-auto object-contain scale-x-[-1]" data-astro-cid-yya52rkr>
-                        </div>
-                    </div>
-                    <!-- TÍTULO DIRECCIÓN -->
-                    <div class="mb-2" id="titulo-dir-regalos" data-astro-cid-yya52rkr>
-                        <h2 class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide" data-astro-cid-yya52rkr>Dirección
-</h2>
-                    </div>
-                    <!-- INFORMACIÓN DE UBICACIÓN -->
-                    <div class="mb-2" id="info-regalos" data-astro-cid-yya52rkr>
-                        <!-- Nombre del lugar -->
-                        <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-yya52rkr>Piscina Paraíso Acuático
-</h3>
-                        <!-- Dirección -->
-                        <p class="font-charm text-lg md:text-xl text-[#626a54] leading-relaxed mb-3" data-astro-cid-yya52rkr>
-                            Barrio Paraíso
 
-                        </p>
-                        <!-- Fecha y hora del conteo de regalos -->
-                        <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold" data-astro-cid-yya52rkr>5 de diciembre de 2026 · 14:00 hrs.</p>
-                    </div>
-                    <!-- Ubicación exacta pendiente de confirmar -->
-                    <div class="gift-map-pending" id="boton-regalos" data-astro-cid-yya52rkr>
-                        <!-- Al recibir el mapa real, sustituir este botón deshabilitado por un enlace a esa URL. -->
-                        <button type="button" class="gift-map-button" disabled aria-describedby="mapa-regalos-pendiente">
-                            <img src="./imagenes/VerUbicacion.webp" alt="Ver ubicación" class="w-56 md:w-56 lg:w-64 h-auto object-contain" data-astro-cid-yya52rkr>
-                        </button>
-                        <p id="mapa-regalos-pendiente" class="font-charm text-base text-[#626a54]">Ubicación por confirmar</p>
-                    </div>
-                </div>
-            </section>
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- 📅 COMPONENTE FECHA - RECEPCIÓN DE REGALOS                 -->
             <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1119,6 +1073,53 @@
                             <p class="font-charm text-3xl md:text-4xl text-[#626a54] font-bold" data-astro-cid-clu36qb4>2026
 </p>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-8 px-4 relative" data-astro-cid-yya52rkr>
+                <div class="max-w-xl mx-auto text-center relative" data-astro-cid-yya52rkr>
+                    <!-- 🏛️ ICONO CON FLORES EN LOS BORDES -->
+                    <div class="relative mb-4" id="icono-direccion-regalos" data-astro-cid-yya52rkr>
+                        <!-- 🌸 FLORES BORDE IZQUIERDO -->
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -ml-6 sm:-ml-7 md:-ml-8" id="flores-regalos-izq" data-astro-cid-yya52rkr>
+                            <img src="./imagenes/FlorLateral.webp" alt="Flores decorativas izquierda" class="w-full h-auto object-contain" data-astro-cid-yya52rkr>
+                        </div>
+                        <!-- TÍTULO EVENTO -->
+                        <div class="mb-2" id="titulo-regalos" data-astro-cid-yya52rkr>
+                            <h2 class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide" data-astro-cid-yya52rkr>Conteo de Regalos
+</h2>
+                        </div>
+                        <!-- ICONO CENTRAL -->
+                        <div class="flex justify-center" data-astro-cid-yya52rkr>
+                            <img src="./assets/iconos-animados/regalos.png" data-gif="./assets/iconos-animados/regalos.gif" data-still="./assets/iconos-animados/regalos.png" alt="Conteo de regalos" class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-dorado-regalos" data-astro-cid-yya52rkr>
+                        </div>
+                        <!-- 🌸 FLORES BORDE DERECHO -->
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -mr-6 sm:-mr-7 md:-mr-8" id="flores-regalos-der" data-astro-cid-yya52rkr>
+                            <img src="./imagenes/FlorLateral.webp" alt="Flores decorativas derecha" class="w-full h-auto object-contain scale-x-[-1]" data-astro-cid-yya52rkr>
+                        </div>
+                    </div>
+                    <!-- TÍTULO DIRECCIÓN -->
+                    <div class="mb-2" id="titulo-dir-regalos" data-astro-cid-yya52rkr>
+                        <h2 class="font-charm text-2xl md:text-3xl text-[#C9A961] font-bold tracking-wide" data-astro-cid-yya52rkr>Dirección
+</h2>
+                    </div>
+                    <!-- INFORMACIÓN DE UBICACIÓN -->
+                    <div class="mb-2" id="info-regalos" data-astro-cid-yya52rkr>
+                        <!-- Nombre del lugar -->
+                        <h3 class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold mb-2" data-astro-cid-yya52rkr>Piscina Paraíso Acuático
+</h3>
+                        <!-- Dirección -->
+                        <p class="font-charm text-lg md:text-xl text-[#626a54] leading-relaxed mb-3" data-astro-cid-yya52rkr>
+                            Barrio Paraíso
+
+                        </p>
+                        <!-- Fecha y hora del conteo de regalos -->
+                        <p class="font-charm text-xl md:text-2xl text-[#C9A961] font-bold" data-astro-cid-yya52rkr>5 de diciembre de 2026 · 14:00 hrs.</p>
+                    </div>
+                    <div class="flex justify-center" id="boton-regalos" data-astro-cid-yya52rkr>
+                        <a href="https://maps.app.goo.gl/W4zGYgwtqjeYr6Lt6" target="_blank" rel="noopener noreferrer">
+                            <img src="./imagenes/VerUbicacion.webp" alt="Ver ubicación de Piscina Paraíso Acuático" class="w-56 md:w-56 lg:w-64 h-auto object-contain cursor-pointer transition-transform duration-300 hover:scale-105">
+                        </a>
                     </div>
                 </div>
             </section>
@@ -1239,7 +1240,7 @@
                                 <div class="evento-regalos grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-uwibvbn4>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-izq" data-astro-cid-uwibvbn4>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-uwibvbn4>
-                                            <img src="./imagenes/lluvia-sobre.png" alt="Conteo regalos" class="w-full h-full object-contain icono-dorado-regalos" data-astro-cid-uwibvbn4>
+                                            <img src="./assets/iconos-animados/regalos.png" data-gif="./assets/iconos-animados/regalos.gif" data-still="./assets/iconos-animados/regalos.png" alt="Conteo regalos" class="w-full h-full object-contain icono-dorado-regalos" data-astro-cid-uwibvbn4>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-uwibvbn4>
@@ -1267,7 +1268,7 @@
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-der" data-astro-cid-uwibvbn4>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-uwibvbn4>
-                                            <img src="./imagenes/musica.png" alt="Fiesta" class="w-full h-full object-contain icono-dorado-regalos" data-astro-cid-uwibvbn4>
+                                            <img src="./assets/iconos-animados/fiesta.png" data-gif="./assets/iconos-animados/fiesta.gif" data-still="./assets/iconos-animados/fiesta.png" alt="Fiesta" class="w-full h-full object-contain icono-dorado-regalos" data-astro-cid-uwibvbn4>
                                         </div>
                                     </div>
                                 </div>
@@ -1283,7 +1284,7 @@
                                 <div class="evento-regalos grid grid-cols-2 gap-4 md:gap-8 py-1 opacity-0" data-astro-cid-uwibvbn4>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 imagen-izq" data-astro-cid-uwibvbn4>
                                         <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 transform transition-transform duration-300 hover:scale-110" data-astro-cid-uwibvbn4>
-                                            <img src="./imagenes/despedida.png" alt="Despedida" class="w-full h-full object-contain icono-dorado-regalos" data-astro-cid-uwibvbn4>
+                                            <img src="./assets/iconos-animados/despedida.png" data-gif="./assets/iconos-animados/despedida.gif" data-still="./assets/iconos-animados/despedida.png" alt="Despedida" class="w-full h-full object-contain icono-dorado-regalos" data-astro-cid-uwibvbn4>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-center justify-center px-2 md:px-4 text-center texto-der" data-astro-cid-uwibvbn4>
