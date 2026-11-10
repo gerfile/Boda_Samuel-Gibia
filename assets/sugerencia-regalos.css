@@ -1,0 +1,14 @@
+.gift-suggestions { padding: 32px 20px 12px; text-align: center; color: #626a54; font-family: 'Charm', cursive; }
+.gift-suggestions-inner { width: min(100%, 540px); margin: auto; }
+.gift-suggestions-floral { display: block; width: min(45%, 190px); height: auto; margin: 0 auto 20px; }
+.gift-suggestions-icon { display: block; width: 80px; height: 80px; object-fit: contain; margin: 0 auto 14px; filter: brightness(0) saturate(100%) invert(73%) sepia(17%) saturate(1089%) hue-rotate(358deg) brightness(92%) contrast(86%); }
+#titulo-sugerencia-regalos { font: 400 clamp(34px, 7vw, 46px)/1.3 'Great Vibes', cursive; color: #C9A961; margin: 0 0 20px; overflow-wrap: break-word; }
+.gift-suggestions p { font-size: clamp(18px, 4vw, 21px); line-height: 1.6; margin: 0; }
+.gift-suggestions .gift-suggestions-intro { max-width: 440px; margin: 0 auto 26px; }
+.gift-suggestions-panel { padding: 24px 22px; border: 1px solid #C9A96185; border-radius: 18px; background: #ffffff45; margin: 14px 0; }
+.gift-suggestions h3 { font: 700 clamp(20px, 4.5vw, 25px)/1.4 'Charm', cursive; color: #C9A961; margin: 0 0 12px; }
+.gift-suggestions .gift-pending { font-size: 18px; }
+.gift-qr-pending { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px 14px; margin: 18px auto 22px; max-width: 290px; border: 1px dashed #C9A96170; border-radius: 12px; background: #ffffff35; }
+.gift-qr-pending svg { width: 60px; height: 60px; stroke: #C9A961; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.gift-suggestions .gift-qr-pending p { font-size: 17px; }
+@media (max-width: 360px) { .gift-suggestions { padding-inline: 16px; } .gift-suggestions-panel { padding: 20px 16px; } }
