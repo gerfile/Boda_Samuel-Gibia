@@ -80,3 +80,6 @@
 .gift-map-button:disabled { opacity: .65; cursor: not-allowed; }
 .gift-map-button img { display: block; max-width: 100%; }
 #mapa-regalos-pendiente { margin: 0; }
+
+/* Título combinado del evento: permite salto natural sin desbordar en móvil. */
+#titulo-direccion h2 { white-space: normal; overflow-wrap: break-word; line-height: 1.35; }
