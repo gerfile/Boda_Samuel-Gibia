@@ -231,6 +231,12 @@
       transform: scale(0.95) translateY(-30px);
     }
   }
+  @media (max-width: 480px) {
+    .env-inner { padding: 4% 6% 2%; }
+    .mid { min-height: clamp(56px, 16.7vw, 64px); margin: 1% 0; }
+    .sello-wrap { width: clamp(56px, 16.7vw, 64px); }
+    .invitacion-texto { font-size: clamp(20px, 5.5vw, 22px); line-height: 1.2; }
+  }
   .card:focus-visible { outline: 3px solid #C9A961; outline-offset: 6px; }
   .transition-overlay, .transition-content { transition-duration: .65s; }
   @media (prefers-reduced-motion: reduce) {
