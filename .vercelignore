@@ -1,0 +1,6 @@
+integracion-rsvp/
+tests/
+preview-*/
+pareja/
+iconos moviles/
+.env*

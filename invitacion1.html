@@ -269,6 +269,8 @@
         <link rel="stylesheet" href="./assets/invitacion.css">
         <link rel="stylesheet" href="./assets/music-card.css">
         <script src="./assets/invitacion.js" defer></script>
+        <link rel="stylesheet" href="./assets/rsvp.css">
+        <script src="./assets/rsvp.js" defer></script>
         <script src="./assets/iconos-animados.js" defer></script>
         <link rel="stylesheet" href="./assets/sugerencia-regalos.css">
         <link rel="stylesheet" href="./assets/panda-footer.css">
@@ -1155,6 +1157,12 @@
                     </div>
                 </div>
             </section>
+            <section class="rsvp-section" aria-labelledby="rsvp-title">
+                <img class="rsvp-floral" src="./imagenes/Separadores.webp" alt="" aria-hidden="true">
+                <h2 id="rsvp-title">Confirma tu asistencia</h2>
+                <p>Nos encantará saber si podrás acompañarnos.</p>
+                <button id="rsvp-open" type="button" class="rsvp-button" aria-haspopup="dialog" aria-controls="rsvp-dialog">Confirmar asistencia</button>
+            </section>
             <section class="py-4 px-4 relative overflow-hidden" data-astro-cid-vofvjw4t>
                 <div class="max-w-6xl mx-auto relative z-10" data-astro-cid-vofvjw4t>
                     <div class="max-w-4xl mx-auto text-center" data-astro-cid-vofvjw4t>
@@ -1209,24 +1217,6 @@
               </svg>
             </div>
             <div class="w-20 h-[1px] bg-gradient-to-l from-transparent via-[#C9A961] to-[#C9A961]"></div>
-          </div> -->
-                                <!-- <div id="seccion-confirmar" class="mt-10">
-            <p class="font-charm text-2xl md:text-3xl lg:text-4xl text-[#C9A961] font-bold mb-8" id="texto-confirmar">
-              Esperamos contar con tu presencia
-            </p>
-            <div class="flex justify-center mb-10" id="boton-confirmar">
-              <a
-                href="https://wa.me/59178762918?text=Me%20complace%20confirmar%20mi%20asistencia%20para%20la%20boda.%20Nos%20vemos%20pronto"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="./imagenes/ConfirmarAsistencia.webp"
-                  alt="Confirmar asistencia por WhatsApp"
-                  class="w-64 md:w-72 lg:w-72 h-auto object-contain cursor-pointer transition-transform duration-300 hover:scale-105 hover:brightness-110"
-                />
-              </a>
-            </div>
           </div> -->
                             </div>
                         </div>
@@ -1283,5 +1273,25 @@
         <!-- ✨ EFECTO DE APARICIÓN SUAVE AL HACER SCROLL                 -->
         <!-- ═══════════════════════════════════════════════════════════ -->
 
+
+        <dialog id="rsvp-dialog" class="rsvp-dialog" aria-labelledby="rsvp-dialog-title">
+            <button type="button" id="rsvp-close" class="rsvp-button rsvp-close" aria-label="Cerrar formulario de asistencia">Cerrar</button>
+            <h2 id="rsvp-dialog-title">Confirmar asistencia</h2>
+            <form id="rsvp-form">
+                <label for="rsvp-name">Nombre y apellido</label>
+                <input type="text" id="rsvp-name" name="name" autocomplete="name" maxlength="120" required>
+                <fieldset>
+                    <legend>¿Podrás acompañarnos?</legend>
+                    <label class="rsvp-choice"><input type="radio" name="attendance" value="Sí asistiré" required> Sí asistiré</label>
+                    <label class="rsvp-choice"><input type="radio" name="attendance" value="No podré asistir" required> No podré asistir</label>
+                </fieldset>
+                <div class="rsvp-honeypot" aria-hidden="true"><label for="rsvp-website">Sitio web</label><input id="rsvp-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+                <button class="rsvp-button" id="rsvp-submit" type="submit">Enviar respuesta</button>
+                <p class="rsvp-privacy">Usaremos estos datos para organizar la asistencia a nuestra boda.</p>
+                <p id="rsvp-progress" class="rsvp-feedback" role="status"></p>
+                <p id="rsvp-error" class="rsvp-feedback" role="alert"></p>
+            </form>
+            <p id="rsvp-success" role="status" tabindex="-1" hidden></p>
+        </dialog>
     </body>
 </html>
